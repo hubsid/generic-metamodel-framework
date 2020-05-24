@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    platform: h2
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password: ''
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
+    root: debug
+sampleData:
+  otPrefix: 'object type '
+  attrPrefix: 'attribute '
+  attrCount: 3
+  otBranchCount: 3
+  maxlevel: 3
+  rootObjectTypeName: root
+  defaultAttributeType: text
