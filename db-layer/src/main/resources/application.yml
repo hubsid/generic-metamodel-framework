@@ -21,6 +21,6 @@ sampleData:
   attrPrefix: 'attribute '
   attrCount: 3
   otBranchCount: 3
-  maxlevel: 3
+  maxlevel: 2
   rootObjectTypeName: root
   defaultAttributeType: text

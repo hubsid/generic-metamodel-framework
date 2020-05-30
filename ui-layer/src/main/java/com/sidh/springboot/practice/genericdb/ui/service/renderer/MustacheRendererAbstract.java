@@ -11,11 +11,15 @@ public abstract class MustacheRendererAbstract implements Renderer {
     private Mustache.Compiler compiler;
     private HashMap<String, Object> context = new HashMap<>();
 
+    public String genericRender(String templateName, HashMap<String, Object> context) {
+        Template template = compiler.loadTemplate(templateName);
+        return template.execute(context);
+    }
+
     @Override
     public String render() {
-        Template template = compiler.loadTemplate(getTemplateName());
         loadContext(context);
-        return template.execute(context);
+        return genericRender(getTemplateName(), context);
     }
 
     protected abstract void loadContext(HashMap<String, Object> context);
