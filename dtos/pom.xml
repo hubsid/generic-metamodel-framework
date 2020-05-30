@@ -9,15 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>genericdb-db-layer</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.sidh.springboot.practice</groupId>
-            <artifactId>genericdb-dtos</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    <artifactId>genericdb-dtos</artifactId>
 
 
 </project>

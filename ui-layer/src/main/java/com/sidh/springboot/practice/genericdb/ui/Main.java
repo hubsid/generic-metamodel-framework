@@ -1,7 +1,7 @@
 package com.sidh.springboot.practice.genericdb.ui;
 
-import com.sidh.springboot.practice.genericdb.db.entity.AttributeType;
 import com.sidh.springboot.practice.genericdb.db.repo.AttributeTypeRepo;
+import com.sidh.springboot.practice.genericdb.dtos.entity.AttributeType;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

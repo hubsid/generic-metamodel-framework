@@ -1,7 +1,7 @@
 package com.sidh.springboot.practice.genericdb.db.controller;
 
-import com.sidh.springboot.practice.genericdb.db.entity.AttributeType;
 import com.sidh.springboot.practice.genericdb.db.service.AttributeTypeService;
+import com.sidh.springboot.practice.genericdb.dtos.entity.AttributeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

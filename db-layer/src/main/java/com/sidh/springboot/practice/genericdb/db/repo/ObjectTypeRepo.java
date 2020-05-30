@@ -1,7 +1,7 @@
 package com.sidh.springboot.practice.genericdb.db.repo;
 
-import com.sidh.springboot.practice.genericdb.db.entity.Attribute;
-import com.sidh.springboot.practice.genericdb.db.entity.ObjectType;
+import com.sidh.springboot.practice.genericdb.dtos.entity.Attribute;
+import com.sidh.springboot.practice.genericdb.dtos.entity.ObjectType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

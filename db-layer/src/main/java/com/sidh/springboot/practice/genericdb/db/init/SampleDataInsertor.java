@@ -1,12 +1,12 @@
 package com.sidh.springboot.practice.genericdb.db.init;
 
-import com.sidh.springboot.practice.genericdb.db.entity.Attribute;
-import com.sidh.springboot.practice.genericdb.db.entity.AttributeObjectType;
-import com.sidh.springboot.practice.genericdb.db.entity.ObjectType;
 import com.sidh.springboot.practice.genericdb.db.repo.AttributeBindRepo;
 import com.sidh.springboot.practice.genericdb.db.repo.AttributeRepo;
 import com.sidh.springboot.practice.genericdb.db.repo.AttributeTypeRepo;
 import com.sidh.springboot.practice.genericdb.db.repo.ObjectTypeRepo;
+import com.sidh.springboot.practice.genericdb.dtos.entity.Attribute;
+import com.sidh.springboot.practice.genericdb.dtos.entity.AttributeObjectType;
+import com.sidh.springboot.practice.genericdb.dtos.entity.ObjectType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

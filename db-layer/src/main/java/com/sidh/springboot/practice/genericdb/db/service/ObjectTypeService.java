@@ -1,9 +1,9 @@
 package com.sidh.springboot.practice.genericdb.db.service;
 
 import com.sidh.springboot.practice.genericdb.db.Constants;
-import com.sidh.springboot.practice.genericdb.db.entity.Attribute;
-import com.sidh.springboot.practice.genericdb.db.entity.ObjectType;
 import com.sidh.springboot.practice.genericdb.db.repo.ObjectTypeRepo;
+import com.sidh.springboot.practice.genericdb.dtos.entity.Attribute;
+import com.sidh.springboot.practice.genericdb.dtos.entity.ObjectType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

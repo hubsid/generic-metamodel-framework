@@ -6,6 +6,7 @@
     <modules>
         <module>db-layer</module>
         <module>ui-layer</module>
+        <module>dtos</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

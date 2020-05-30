@@ -1,4 +1,4 @@
-package com.sidh.springboot.practice.genericdb.db.entity;
+package com.sidh.springboot.practice.genericdb.dtos.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
