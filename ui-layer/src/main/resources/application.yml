@@ -1,2 +1,12 @@
 server:
   port: 7001
+logging:
+  level:
+    root: debug
+spring:
+  mustache:
+    suffix: .html
+metamodel:
+  header:
+    title: Generic Metamodel Framework
+    subtitle: metamodel tool
