@@ -12,7 +12,7 @@ public class LeftPanelRenderer extends MustacheRendererAbstract {
 
     @Override
     protected void loadContext(HashMap<String, Object> context) {
-
+        context.put("header", "some header value");
         context.put("content", otRenderer.render());
     }
 

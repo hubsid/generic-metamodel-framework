@@ -2,7 +2,7 @@ server:
   port: 7001
 logging:
   level:
-    root: debug
+    root: info
 spring:
   mustache:
     suffix: .html
@@ -10,3 +10,9 @@ metamodel:
   header:
     title: Generic Metamodel Framework
     subtitle: metamodel tool
+external:
+  dblayer:
+    baseurl: http://localhost:7000
+    ot:
+      getOnePath: /objectType/%s
+      getChildrenPath: /objectType/%s/children

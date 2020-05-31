@@ -2,6 +2,8 @@ package com.sidh.springboot.practice.genericdb.ui.service.renderer;
 
 import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
@@ -11,7 +13,10 @@ public abstract class MustacheRendererAbstract implements Renderer {
     private Mustache.Compiler compiler;
     private HashMap<String, Object> context = new HashMap<>();
 
+    private static final Logger logger = LoggerFactory.getLogger(MustacheRendererAbstract.class);
+
     public String genericRender(String templateName, HashMap<String, Object> context) {
+        logger.info("context object = {}", context);
         Template template = compiler.loadTemplate(templateName);
         return template.execute(context);
     }

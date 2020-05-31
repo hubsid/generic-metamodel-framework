@@ -11,31 +11,31 @@
 		padding: 5px;
 		border-right: 2px solid lightgray;
 	}
-	.right-panel {
-		padding: 5px;
-		float: left;
-		height: 100%;
-		width: 100%;
-	}
 	.object-type-unit {
-		margin-left: 50px;
-		height: 30px;
+		margin-left: 20px;
 		border-left: 1px solid lightgray;
 		border-bottom: 1px solid lightgray;
 		padding: 5px;
 	}
-	.object-type-unit.expand, .object-type-unit.collapse {
+	.object-type-unit > .expand, .object-type-unit > .collapse {
+		float: left;
 		border-radius: 15px;
 		color: white;
 		font-weight: bolder;
 	}
-	.object-type-unit.expand {
+	.object-type-unit > .expand {
 		border: 1px solid lightgreen;
 		background-color: lightgreen;
 	}
-	.object-type-unit.collapse {
+	.object-type-unit > .collapse {
 		border: 1px solid orange;
 		background-color: orange;
 	}
-
+	.right-panel {
+		float: left;
+		padding: 5px;
+		height: 100%;
+		width: 100%;
+		overflow-y: scroll;
+	}
 </style>
