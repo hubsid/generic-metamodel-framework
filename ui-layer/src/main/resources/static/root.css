@@ -1,0 +1,66 @@
+html {
+	height: 100%;
+}
+body {
+	color: darkslategray;
+	height: 100%;
+	overflow-y: hidden;
+}
+.header {
+	height: 7%;
+	border-bottom:5px solid lightgray;
+	margin-bottom: 2px;
+}
+.left-panel {
+	float: left;
+	height: 90%;
+	border-right: 2px solid lightgray;
+	padding-right: 40px;
+	overflow-x: auto;
+	resize: horizontal;
+}
+.right-panel {
+	margin-left: 30%;
+	height: 90%;
+	padding: 5px;
+	overflow-y: auto;
+}
+.ot-unit {
+	margin-left: 40px;
+	display: flex;
+	flex-flow: column;
+	border-left: 1px solid gray;
+}
+.ot-unit:last-child {
+	border: none;
+}
+.ot-description {
+	display: flex;
+	height: 30px;
+	align-items: center;
+}
+.ot-description > * {
+	height: inherit;
+	flex-shrink: 0;
+}
+.ot-branch-symbol {
+	width: 40px;
+	height: 50%;
+}
+.ot-branch-symbol:first-child {
+	border-bottom: 1px solid gray;
+}
+.ot-unit:last-child > .ot-description > .ot-branch-symbol-container > .ot-branch-symbol:first-child {
+    border-left: 1px solid gray;
+}
+.ot-expand-collapse {
+	height: 20px;
+	width: 20px;
+	line-height: 15px;
+	font-size: 30px;
+	font-family: monospace;
+	text-align: center;
+}
+.ot-expand-collapse {
+	background-color: lightgreen;
+}
