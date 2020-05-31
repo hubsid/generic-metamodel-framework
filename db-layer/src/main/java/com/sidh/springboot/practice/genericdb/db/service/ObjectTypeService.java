@@ -61,6 +61,9 @@ public class ObjectTypeService {
     }
 
     public List<ObjectType> getChildren(int id) {
-        return getAll().stream().filter(o -> o.getParentId() == id).collect(Collectors.toList());
+        return getAll().stream()
+                .filter(o -> o.getParentId() == id)
+                .filter(o -> o.getId() != Constants.ROOT_OT_ID)
+                .collect(Collectors.toList());
     }
 }
