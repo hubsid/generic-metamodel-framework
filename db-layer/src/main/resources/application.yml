@@ -15,7 +15,7 @@ logging:
     org:
       hibernate:
         type: trace
-    root: debug
+    root: info
 sampleData:
   otPrefix: 'object type '
   attrPrefix: 'attribute '

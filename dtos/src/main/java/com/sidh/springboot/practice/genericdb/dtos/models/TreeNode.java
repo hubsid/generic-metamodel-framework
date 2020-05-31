@@ -1,4 +1,4 @@
-package com.sidh.springboot.practice.genericdb.ui.models;
+package com.sidh.springboot.practice.genericdb.dtos.models;
 
 import java.util.List;
 

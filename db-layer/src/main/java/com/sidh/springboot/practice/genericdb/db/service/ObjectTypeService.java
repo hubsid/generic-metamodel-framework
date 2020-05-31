@@ -4,6 +4,7 @@ import com.sidh.springboot.practice.genericdb.db.Constants;
 import com.sidh.springboot.practice.genericdb.db.repo.ObjectTypeRepo;
 import com.sidh.springboot.practice.genericdb.dtos.entity.Attribute;
 import com.sidh.springboot.practice.genericdb.dtos.entity.ObjectType;
+import com.sidh.springboot.practice.genericdb.dtos.models.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,31 @@ public class ObjectTypeService {
 
     public List<Attribute> getBoundAttributes(int id) {
         return repo.getBoundAttributes(id);
+    }
+
+    public List<ObjectType> getChildren(int id) {
+        return getAll().stream()
+                .filter(o -> o.getParentId() == id)
+                .filter(o -> o.getId() != Constants.ROOT_OT_ID)
+                .collect(Collectors.toList());
+    }
+
+    public TreeNode<ObjectType> getChildrenTree(int id) {
+        TreeNode<ObjectType> node = new TreeNode<>();
+        Optional<ObjectType> parent = getOne(id);
+        if (parent.isPresent()) {
+            ObjectType parentObj = parent.get();
+            node.setElement(parentObj);
+
+            List<ObjectType> children = getChildren(id);
+            node.setChildren(
+                    children.stream()
+                            .map(ObjectType::getId)
+                            .map(this::getChildrenTree)
+                            .collect(Collectors.toList())
+            );
+        }
+        return node;
     }
 
     public List<Attribute> getInheritedAttributes(int id) {
@@ -58,12 +84,5 @@ public class ObjectTypeService {
                 return getOne(objectType.get().getParentId());
 
         return Optional.empty();
-    }
-
-    public List<ObjectType> getChildren(int id) {
-        return getAll().stream()
-                .filter(o -> o.getParentId() == id)
-                .filter(o -> o.getId() != Constants.ROOT_OT_ID)
-                .collect(Collectors.toList());
     }
 }

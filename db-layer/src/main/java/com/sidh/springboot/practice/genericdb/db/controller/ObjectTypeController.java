@@ -3,6 +3,7 @@ package com.sidh.springboot.practice.genericdb.db.controller;
 import com.sidh.springboot.practice.genericdb.db.service.ObjectTypeService;
 import com.sidh.springboot.practice.genericdb.dtos.entity.Attribute;
 import com.sidh.springboot.practice.genericdb.dtos.entity.ObjectType;
+import com.sidh.springboot.practice.genericdb.dtos.models.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +34,11 @@ public class ObjectTypeController {
     @GetMapping("/{id}/children")
     public List<ObjectType> childrenEndpoint(@PathVariable int id) {
         return service.getChildren(id);
+    }
+
+    @GetMapping("/{id}/childrenTree")
+    public TreeNode<ObjectType> childrenTreeEndpoint(@PathVariable int id) {
+        return service.getChildrenTree(id);
     }
 
     @GetMapping("/{id}/attribute")

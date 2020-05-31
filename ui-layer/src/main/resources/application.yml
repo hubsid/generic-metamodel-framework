@@ -16,3 +16,5 @@ external:
     ot:
       getOnePath: /objectType/%s
       getChildrenPath: /objectType/%s/children
+      getChildrenTree: /objectType/%s/childrenTree
+
