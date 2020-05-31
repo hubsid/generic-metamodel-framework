@@ -16,7 +16,7 @@ public abstract class MustacheRendererAbstract implements Renderer {
     private static final Logger logger = LoggerFactory.getLogger(MustacheRendererAbstract.class);
 
     public String genericRender(String templateName, HashMap<String, Object> context) {
-        logger.info("context object = {}", context);
+//        logger.info("context object = {}", context);
         Template template = compiler.loadTemplate(templateName);
         return template.execute(context);
     }

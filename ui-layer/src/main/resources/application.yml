@@ -2,7 +2,7 @@ server:
   port: 7001
 logging:
   level:
-    root: info
+    root: debug
 spring:
   mustache:
     suffix: .html
