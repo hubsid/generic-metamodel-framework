@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/objectType")
+@CrossOrigin("*")
 public class ObjectTypeController {
     @Autowired
     private ObjectTypeService service;

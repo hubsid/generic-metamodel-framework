@@ -26,6 +26,7 @@ public class SingleOTRenderer extends MustacheRendererAbstract implements InputR
     @Override
     public String render(ObjectType objectType) {
         HashMap<String, Object> context = new HashMap<>();
+        context.put("ot-id", objectType.getId());
         context.put("name", objectType.getName());
         context.put("children", "");
         return Renderer.render(getTemplateName(), getCompiler(), context);

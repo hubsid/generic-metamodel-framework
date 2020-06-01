@@ -29,6 +29,7 @@ public class FullOTTreeRenderer extends MustacheRendererAbstract {
 
     private String renderTree(TreeNode<ObjectType> rootNode) {
         HashMap<String, Object> context = new HashMap<>();
+        context.put("ot-id", rootNode.getElement().getId());
         context.put("name", rootNode.getElement().getName());
 
         String childRendering = rootNode.getChildren().stream()

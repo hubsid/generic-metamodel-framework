@@ -1,4 +1,4 @@
-package com.sidh.springboot.practice.genericdb.db;
+package com.sidh.springboot.practice.genericdb.dtos;
 
 public class Constants {
     public static final String AOT_JOIN_TABLE = "ATTRIBUTE_OBJECT_TYPES";

@@ -1,7 +1,7 @@
 package com.sidh.springboot.practice.genericdb.db.service;
 
-import com.sidh.springboot.practice.genericdb.db.Constants;
 import com.sidh.springboot.practice.genericdb.db.repo.ObjectTypeRepo;
+import com.sidh.springboot.practice.genericdb.dtos.Constants;
 import com.sidh.springboot.practice.genericdb.dtos.entity.Attribute;
 import com.sidh.springboot.practice.genericdb.dtos.entity.ObjectType;
 import com.sidh.springboot.practice.genericdb.dtos.models.TreeNode;
