@@ -13,12 +13,18 @@ function showHideChildren(elem) {
     else if(elem.innerText == '+') {
         childOtContainer.hidden = false;
         elem.innerText = '-';
-        refreshChildOTs(childOtContainer);
+        if(childOtContainer.childElementCount == 0)
+        	fetchChildren(childOtContainer);
     }
 }
 
-function refreshChildOTs(childOtContainer) {
-	console.log("refreshing.");
+function refreshChildren(refreshButton) {
+	fetchChildren(refreshButton.parentElement.parentElement.children[1]);
+	refreshButton.previousElementSibling.innerText = '-';
+}
+
+function fetchChildren(childOtContainer) {
+	console.log("fetching children.");
 	var id = 1 * childOtContainer.parentElement.getAttribute("ot-id");
 	console.log("id = " + id);
 	var callback = function(responseHTML) { childOtContainer.innerHTML = responseHTML;};
@@ -33,7 +39,7 @@ function ajaxCall(url, callback) {
 		if(this.readyState == 4) {
 			if(this.status == 200) {
 				console.log("success:");
-				console.log(this.responseText);
+				// console.log(this.responseText);
 				callback(this.responseText);
 			}
 			else {

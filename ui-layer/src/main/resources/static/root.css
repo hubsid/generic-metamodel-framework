@@ -53,7 +53,7 @@ body {
 .ot-unit:last-child > .ot-description > .ot-branch-symbol-container > .ot-branch-symbol:first-child {
     border-left: 1px solid gray;
 }
-.ot-expand-collapse {
+.ot-expand-collapse, .ot-refresh {
 	height: 20px;
 	width: 20px;
 	line-height: 15px;
@@ -62,5 +62,11 @@ body {
 	text-align: center;
 }
 .ot-expand-collapse {
+	background-color: orange;
+}
+
+.ot-refresh {
 	background-color: lightgreen;
+	font-size: 20px;
+	line-height: 20px;
 }
