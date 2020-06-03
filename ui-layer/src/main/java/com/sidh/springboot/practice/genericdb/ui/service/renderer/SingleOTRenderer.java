@@ -20,7 +20,7 @@ public class SingleOTRenderer extends MustacheRendererAbstract implements InputR
 
     @Override
     protected String getTemplateName() {
-        return "object-type-unit";
+        return "ot-unit";
     }
 
     @Override

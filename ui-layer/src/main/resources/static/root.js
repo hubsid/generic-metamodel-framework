@@ -19,13 +19,13 @@ function showHideChildren(elem) {
 }
 
 function refreshChildren(refreshButton) {
-	fetchChildren(refreshButton.parentElement.parentElement.children[1]);
-	refreshButton.previousElementSibling.innerText = '-';
+	if(refreshButton.previousElementSibling.innerText == '-')
+		fetchChildren(refreshButton.parentElement.parentElement.children[1]);
 }
 
 function fetchChildren(childOtContainer) {
 	console.log("fetching children.");
-	var id = 1 * childOtContainer.parentElement.getAttribute("ot-id");
+	var id = 1 * childOtContainer.previousElementSibling.getAttribute("ot-id");
 	console.log("id = " + id);
 	var callback = function(responseHTML) { childOtContainer.innerHTML = responseHTML;};
 	ajaxCall(makeUrl_ot_children(id), callback);
@@ -50,4 +50,17 @@ function ajaxCall(url, callback) {
 	req.open("GET", url);
 	req.send();
 	console.log("sent request.");
+}
+
+selection = {
+	attr: undefined,
+	ot: undefined
+}
+
+function selectThisOt(elem) {
+	if(selection.ot) {
+		selection.ot.classList.remove('selected');
+	}
+	elem.classList.add("selected");
+	selection.ot = elem;
 }

@@ -39,6 +39,10 @@ body {
 	height: 30px;
 	align-items: center;
 }
+.ot-description.selected {
+	background: radial-gradient(white, white, lightgray);
+}
+
 .ot-description > * {
 	height: inherit;
 	flex-shrink: 0;
