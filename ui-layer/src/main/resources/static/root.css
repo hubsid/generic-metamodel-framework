@@ -1,16 +1,19 @@
 html {
 	height: 100%;
 }
+
 body {
 	color: darkslategray;
 	height: 100%;
 	overflow-y: hidden;
 }
+
 .header {
 	height: 7%;
 	border-bottom:5px solid lightgray;
 	margin-bottom: 2px;
 }
+
 .left-panel {
 	float: left;
 	height: 90%;
@@ -19,26 +22,36 @@ body {
 	overflow-x: auto;
 	resize: horizontal;
 }
+
+.left-panel-header, .right-panel-header{
+	width: 100%;
+	height: 10%;
+	border-bottom: 5px solid lightgray;
+}
+
 .right-panel {
-	margin-left: 30%;
 	height: 90%;
 	padding: 5px;
 	overflow-y: auto;
 }
+
 .ot-unit {
 	margin-left: 40px;
 	display: flex;
 	flex-flow: column;
 	border-left: 1px solid gray;
 }
+
 .ot-unit:last-child {
 	border: none;
 }
+
 .ot-description {
 	display: flex;
 	height: 30px;
 	align-items: center;
 }
+
 .ot-description.selected {
 	background: radial-gradient(white, white, lightgray);
 }
@@ -47,16 +60,20 @@ body {
 	height: inherit;
 	flex-shrink: 0;
 }
+
 .ot-branch-symbol {
 	width: 40px;
 	height: 50%;
 }
+
 .ot-branch-symbol:first-child {
 	border-bottom: 1px solid gray;
 }
+
 .ot-unit:last-child > .ot-description > .ot-branch-symbol-container > .ot-branch-symbol:first-child {
     border-left: 1px solid gray;
 }
+
 .ot-expand-collapse, .ot-refresh {
 	height: 20px;
 	width: 20px;
@@ -65,6 +82,7 @@ body {
 	font-family: monospace;
 	text-align: center;
 }
+
 .ot-expand-collapse {
 	background-color: orange;
 }
@@ -74,3 +92,31 @@ body {
 	font-size: 20px;
 	line-height: 20px;
 }
+
+table.attr-list {
+	margin: 10px 10px 30px 0px;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.attr-list thead tr {
+    border-bottom: 1px solid gray;
+    font-weight: bold; 
+}
+
+table.attr-list td {
+	padding: 15px;
+}
+
+table.attr-list thead td{
+	padding-bottom: 30px;
+}
+
+table.attr-list tbody tr {
+	border-bottom: 1px solid lightgray;
+}
+
+table.attr-list td:first-child {
+    text-align:center;
+}
+

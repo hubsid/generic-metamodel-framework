@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.annotation.PostConstruct;
+
 @Controller
 public class MetamodelEntrypointController {
     private HeaderSimpleRenderer header;
@@ -19,6 +21,11 @@ public class MetamodelEntrypointController {
         this.header = header;
         this.leftPanel = leftPanel;
         this.rightPanel = rightPanel;
+    }
+
+    @PostConstruct
+    private void init() {
+        rightPanel.setOtId(0);
     }
 
     @GetMapping("/metamodel")

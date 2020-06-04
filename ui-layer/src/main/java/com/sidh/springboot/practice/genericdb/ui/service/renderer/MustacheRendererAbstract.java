@@ -17,6 +17,7 @@ public abstract class MustacheRendererAbstract implements Renderer {
     @Override
     public String render() {
         loadContext(context);
+        logger.debug("mustache-context=" + context);
         return Renderer.render(getTemplateName(), compiler, context);
     }
 

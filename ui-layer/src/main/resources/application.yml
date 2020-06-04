@@ -2,7 +2,7 @@ server:
   port: 7001
 logging:
   level:
-    root: info
+    com.sidh.springboot.practice.genericdb.ui: debug
 spring:
   mustache:
     suffix: .html
@@ -17,3 +17,4 @@ external:
       getOnePath: /objectType/%s
       getChildrenPath: /objectType/%s/children
       getChildrenTree: /objectType/%s/childrenTree
+      getBoundAttrs: /objectType/%s/attribute
