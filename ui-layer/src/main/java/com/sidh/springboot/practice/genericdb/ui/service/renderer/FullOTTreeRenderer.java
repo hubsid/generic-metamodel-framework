@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 
 @Component
-public class FullOTTreeRenderer extends MustacheRendererAbstract {
+public class FullOTTreeRenderer extends MustacheRendererAbstract<ObjectType> {
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
@@ -26,6 +26,10 @@ public class FullOTTreeRenderer extends MustacheRendererAbstract {
         return renderTree(rootNode);
     }
 
+    @Override
+    public void loadContext(ObjectType obj, HashMap<String, Object> context) {
+
+    }
 
     private String renderTree(TreeNode<ObjectType> rootNode) {
         HashMap<String, Object> context = new HashMap<>();

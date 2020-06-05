@@ -2,6 +2,10 @@ function makeUrl_ot_children(id) {
 	return "/ot/" + id + "/children";
 }
 
+function makeUrl_ot_attrs(id) {
+	return "/ot/" + id + "/attributes";
+}
+
 function showHideChildren(elem) {
     // console.log(elem);
     var childOtContainer = elem.parentElement.parentElement.children[1];
@@ -57,10 +61,32 @@ selection = {
 	ot: undefined
 }
 
+cache = {
+	attrs: {}
+}
+
 function selectThisOt(elem) {
 	if(selection.ot) {
 		selection.ot.classList.remove('selected');
 	}
 	elem.classList.add("selected");
 	selection.ot = elem;
+	fetchAttrs();
+}
+
+function fetchAttrs() {
+	var otId = 1 * selection.ot.getAttribute("ot-id");
+	var attrList = document.getElementById('attr-list').tBodies.item(0);
+
+	if(cache.attrs[otId] == undefined) {
+		console.log("attr cache empty, fetching");
+		ajaxCall(makeUrl_ot_attrs(otId), function(response) {
+			 attrList.innerHTML = response;
+			 cache.attrs[otId] = response;
+		});
+	}
+	else {
+		console.log("fetching from cache");
+		attrList.innerHTML = cache.attrs[otId];
+	}
 }

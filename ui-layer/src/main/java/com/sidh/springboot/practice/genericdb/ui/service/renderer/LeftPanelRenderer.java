@@ -7,10 +7,15 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
 @Component
-public class LeftPanelRenderer extends MustacheRendererAbstract {
+public class LeftPanelRenderer extends MustacheRendererAbstract<String> {
     @Autowired
     @Qualifier("rootOTRenderer")
     private Renderer otRenderer;
+
+    @Override
+    public void loadContext(String obj, HashMap<String, Object> context) {
+
+    }
 
     @Override
     protected void loadContext(HashMap<String, Object> context) {

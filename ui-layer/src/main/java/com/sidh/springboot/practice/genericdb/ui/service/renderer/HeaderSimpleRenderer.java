@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import java.util.HashMap;
 
 @Component
-public class HeaderSimpleRenderer extends MustacheRendererAbstract {
+public class HeaderSimpleRenderer extends MustacheRendererAbstract<String> {
     @Value("${metamodel.header.title}")
     private String title;
     @Value("${metamodel.header.subtitle}")
@@ -18,6 +18,11 @@ public class HeaderSimpleRenderer extends MustacheRendererAbstract {
         System.out.println("header-title:" + title);
         System.out.println("header-subtitle:" + subtitle);
         System.out.println("header-compiler:" + getCompiler());
+    }
+
+    @Override
+    public void loadContext(String obj, HashMap<String, Object> context) {
+
     }
 
     @Override

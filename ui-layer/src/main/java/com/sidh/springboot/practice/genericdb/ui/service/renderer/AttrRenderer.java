@@ -6,8 +6,14 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
 @Component
-public class AttrRenderer extends MustacheRendererAbstract {
+public class AttrRenderer extends MustacheRendererAbstract<Attribute> {
     private Attribute attribute;
+
+    @Override
+    public void loadContext(Attribute attribute, HashMap<String, Object> context) {
+        this.attribute = attribute;
+        loadContext(context);
+    }
 
     @Override
     protected void loadContext(HashMap<String, Object> context) {

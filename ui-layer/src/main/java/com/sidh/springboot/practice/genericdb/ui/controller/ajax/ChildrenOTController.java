@@ -1,6 +1,6 @@
 package com.sidh.springboot.practice.genericdb.ui.controller.ajax;
 
-import com.sidh.springboot.practice.genericdb.ui.service.renderer.ChildrenOTService;
+import com.sidh.springboot.practice.genericdb.ui.service.ChildrenOTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

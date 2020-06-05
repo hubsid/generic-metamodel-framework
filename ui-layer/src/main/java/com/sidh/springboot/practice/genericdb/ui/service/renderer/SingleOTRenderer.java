@@ -6,17 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
 @Component
-public class SingleOTRenderer extends MustacheRendererAbstract implements InputRenderer<ObjectType> {
-
-    @Override
-    public String render() {
-        return null;
-    }
-
-    @Override
-    protected void loadContext(HashMap<String, Object> context) {
-
-    }
+public class SingleOTRenderer extends MustacheRendererAbstract<ObjectType> {
 
     @Override
     protected String getTemplateName() {
@@ -24,11 +14,14 @@ public class SingleOTRenderer extends MustacheRendererAbstract implements InputR
     }
 
     @Override
-    public String render(ObjectType objectType) {
-        HashMap<String, Object> context = new HashMap<>();
+    public void loadContext(ObjectType objectType, HashMap<String, Object> context) {
         context.put("ot-id", objectType.getId());
         context.put("name", objectType.getName());
         context.put("children", "");
-        return Renderer.render(getTemplateName(), getCompiler(), context);
+    }
+
+    @Override
+    protected void loadContext(HashMap<String, Object> context) {
+
     }
 }

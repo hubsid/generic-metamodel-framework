@@ -1,6 +1,7 @@
-package com.sidh.springboot.practice.genericdb.ui.service.renderer;
+package com.sidh.springboot.practice.genericdb.ui.service;
 
 import com.sidh.springboot.practice.genericdb.ui.service.externalServiceCalls.dblayer.OTService;
+import com.sidh.springboot.practice.genericdb.ui.service.renderer.SingleOTRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

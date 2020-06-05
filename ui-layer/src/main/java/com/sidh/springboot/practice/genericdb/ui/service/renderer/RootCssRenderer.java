@@ -6,10 +6,15 @@ import javax.annotation.PostConstruct;
 import java.util.HashMap;
 
 @Component
-public class RootCssRenderer extends MustacheRendererAbstract {
+public class RootCssRenderer extends MustacheRendererAbstract<String> {
     @PostConstruct
     public void print() {
         System.out.println("css-compiler:" + getCompiler());
+    }
+
+    @Override
+    public void loadContext(String obj, HashMap<String, Object> context) {
+
     }
 
     @Override

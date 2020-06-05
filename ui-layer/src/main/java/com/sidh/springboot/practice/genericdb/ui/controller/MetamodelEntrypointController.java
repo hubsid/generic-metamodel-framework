@@ -2,30 +2,24 @@ package com.sidh.springboot.practice.genericdb.ui.controller;
 
 import com.sidh.springboot.practice.genericdb.ui.service.renderer.HeaderSimpleRenderer;
 import com.sidh.springboot.practice.genericdb.ui.service.renderer.LeftPanelRenderer;
+import com.sidh.springboot.practice.genericdb.ui.service.renderer.Renderer;
 import com.sidh.springboot.practice.genericdb.ui.service.renderer.RightPanelRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.annotation.PostConstruct;
-
 @Controller
 public class MetamodelEntrypointController {
-    private HeaderSimpleRenderer header;
-    private LeftPanelRenderer leftPanel;
-    private RightPanelRenderer rightPanel;
+    private Renderer header;
+    private Renderer leftPanel;
+    private Renderer rightPanel;
 
     @Autowired
     public MetamodelEntrypointController(HeaderSimpleRenderer header, LeftPanelRenderer leftPanel, RightPanelRenderer rightPanel) {
         this.header = header;
         this.leftPanel = leftPanel;
         this.rightPanel = rightPanel;
-    }
-
-    @PostConstruct
-    private void init() {
-        rightPanel.setOtId(0);
     }
 
     @GetMapping("/metamodel")
