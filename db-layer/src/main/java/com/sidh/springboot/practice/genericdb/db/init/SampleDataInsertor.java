@@ -9,11 +9,14 @@ import com.sidh.springboot.practice.genericdb.dtos.entity.AttributeObjectType;
 import com.sidh.springboot.practice.genericdb.dtos.entity.ObjectType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 
 @Component
+@Profile("ddlcreate")
 public class SampleDataInsertor {
     @Autowired
     private AttributeTypeRepo attributeTypeRepo;
@@ -38,11 +41,15 @@ public class SampleDataInsertor {
     private String rootObjectTypeName;
     @Value("${sampleData.defaultAttributeType}")
     private String defaultAttributeType;
+    @Autowired
+    private Environment environment;
 
     @PostConstruct
     public void init() {
-        ObjectType rootObjectType = objectTypeRepo.findById(0).get();
-        insertRecursive(0, "0", rootObjectType);
+        if (Arrays.stream(environment.getActiveProfiles()).anyMatch(p -> p.equals("ddlcreate"))) {
+            ObjectType rootObjectType = objectTypeRepo.findById(0).get();
+            insertRecursive(0, "0", rootObjectType);
+        }
     }
 
     private void insertRecursive(int level, String levelName, ObjectType parentObjectType) {
