@@ -3,9 +3,14 @@ server:
 logging:
   level:
     com.sidh.springboot.practice.genericdb.ui: debug
+#    root: trace
 spring:
   mustache:
     suffix: .html
+    prefix: file:ui-layer/src/main/resources/templates/
+  resources:
+    static-locations:
+      - file:ui-layer/src/main/resources/static/
 metamodel:
   header:
     title: Generic Metamodel Framework
