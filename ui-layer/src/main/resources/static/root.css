@@ -23,7 +23,7 @@ body {
 	resize: horizontal;
 }
 
-#left-panel-header, #right-panel-header{
+#left-panel-header, #right-panel-header {
 	width: 100%;
 	height: 10%;
 	border-bottom: 5px solid lightgray;
