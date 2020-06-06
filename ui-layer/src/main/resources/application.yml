@@ -23,3 +23,11 @@ external:
       getChildrenPath: /objectType/%s/children
       getChildrenTree: /objectType/%s/childrenTree
       getBoundAttrs: /objectType/%s/attribute
+---
+spring:
+  profiles: nondev
+  mustache:
+    prefix: classpath:/templates/
+  resources:
+    static-locations:
+      - classpath:/static/
