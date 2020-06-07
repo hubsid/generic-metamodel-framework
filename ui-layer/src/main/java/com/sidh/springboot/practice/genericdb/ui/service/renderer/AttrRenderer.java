@@ -19,7 +19,8 @@ public class AttrRenderer extends MustacheRendererAbstract<Attribute> {
     protected void loadContext(HashMap<String, Object> context) {
         context.put("id", attribute.getId());
         context.put("name", attribute.getName());
-        context.put("desc", attribute.getDescription() == null ? "standard description" : attribute.getDescription());
+        context.put("type", attribute.getAttributeTypeId());
+        context.put("desc", attribute.getDescription() == null ? "" : attribute.getDescription());
     }
 
     @Override
