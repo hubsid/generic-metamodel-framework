@@ -1,3 +1,7 @@
+window.addEventListener("load", function onpageload() {
+	selectThisOt(document.querySelector(".ot-description[ot-id='0']"));
+});
+
 function makeUrl_ot_children(id) {
 	return "/ot/" + id + "/children";
 }
@@ -89,4 +93,14 @@ function fetchAttrs() {
 		console.log("fetching from cache");
 		attrList.innerHTML = cache.attrs[otId];
 	}
+}
+
+function forceFetchAttrs() {
+	var otId = 1 * selection.ot.getAttribute("ot-id");
+	var attrList = document.getElementById('attr-list').tBodies.item(0);
+
+	ajaxCall(makeUrl_ot_attrs(otId), function(response) {
+		 attrList.innerHTML = response;
+		 cache.attrs[otId] = response;
+	});
 }
