@@ -30,9 +30,10 @@ function showHideChildren(elem) {
     }
 }
 
-function refreshChildren(refreshButton) {
-	if(refreshButton.previousElementSibling.innerText == '-')
-		fetchChildren(refreshButton.parentElement.parentElement.children[1]);
+function forceFetchChildrenOts(refreshButton) {
+	fetchChildren(refreshButton.parentElement.parentElement.children[1]);
+	if(refreshButton.previousElementSibling.innerText == '+')
+		refreshButton.previousElementSibling.innerText = '-';
 }
 
 function fetchChildren(childOtContainer) {
