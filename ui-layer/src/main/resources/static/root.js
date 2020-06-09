@@ -71,6 +71,8 @@ cache = {
 
 function selectThisOt(elem) {
 	if(selection.ot) {
+		if(selection.ot == elem)
+			return;
 		selection.ot.classList.remove('selected');
 	}
 	elem.classList.add("selected");
