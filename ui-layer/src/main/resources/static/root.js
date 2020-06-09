@@ -86,12 +86,13 @@ function fetchAttrs() {
 		console.log("attr cache empty, fetching");
 		ajaxCall(makeUrl_ot_attrs(otId), function(response) {
 			 attrList.innerHTML = response;
-			 cache.attrs[otId] = response;
+			 cache.attrs[otId] = getChildNodesArray(attrList);
 		});
 	}
 	else {
 		console.log("fetching from cache");
-		attrList.innerHTML = cache.attrs[otId];
+		removeChildNodes(attrList);
+		setChildNodesFromNodeArray(attrList, cache.attrs[otId]);
 	}
 }
 
@@ -103,4 +104,21 @@ function forceFetchAttrs() {
 		 attrList.innerHTML = response;
 		 cache.attrs[otId] = response;
 	});
+}
+
+function getChildNodesArray(elem) {
+	var array = [];
+	for(childNode of elem.childNodes)
+		array.push(childNode);
+	return array;
+}
+
+function removeChildNodes(elem) {
+	while(elem.hasChildNodes())
+		elem.removeChild(elem.firstChild);
+}
+
+function setChildNodesFromNodeArray(elem, nodeArr) {
+	for(node of nodeArr)
+		elem.appendChild(node);
 }
