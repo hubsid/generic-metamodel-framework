@@ -1,4 +1,8 @@
 window.addEventListener("load", function onpageload() {
+	elemRef.attrTools = document.getElementById("right-panel-tools");
+	elemRef.attrReload = document.getElementById("attrs-reload-button");
+	elemRef.attrInheritedButton = document.getElementById("attrs-inherited-button");
+	elemRef.attrList = document.getElementById("attr-list").tBodies.item(0);
 	selectThisOt(document.querySelector(".ot-description[ot-id='0']"));
 });
 
@@ -62,11 +66,20 @@ function ajaxCall(url, callback) {
 
 selection = {
 	attr: undefined,
-	ot: undefined
+	ot: undefined,
+	getOtId: function() {return 1 * this.ot.getAttribute("ot-id");},
+	showInheritedAttrs: false
 }
 
 cache = {
 	attrs: {}
+}
+
+elemRef = {
+	attrList: undefined,
+	attrTools: undefined,
+	attrReload: undefined,
+	attrInheritedButton: undefined
 }
 
 function selectThisOt(elem) {
@@ -81,8 +94,9 @@ function selectThisOt(elem) {
 }
 
 function fetchAttrs() {
-	var otId = 1 * selection.ot.getAttribute("ot-id");
-	var attrList = document.getElementById('attr-list').tBodies.item(0);
+	var otId = selection.getOtId();
+	console.log("latest changes");
+	var attrList = elemRef.attrList;
 
 	if(cache.attrs[otId] == undefined) {
 		console.log("attr cache empty, fetching");
@@ -99,8 +113,8 @@ function fetchAttrs() {
 }
 
 function forceFetchAttrs() {
-	var otId = 1 * selection.ot.getAttribute("ot-id");
-	var attrList = document.getElementById('attr-list').tBodies.item(0);
+	var otId = selection.getOtId();
+	var attrList = elemRef.attrList;
 
 	ajaxCall(makeUrl_ot_attrs(otId), function(response) {
 		 attrList.innerHTML = response;
@@ -123,4 +137,14 @@ function removeChildNodes(elem) {
 function setChildNodesFromNodeArray(elem, nodeArr) {
 	for(node of nodeArr)
 		elem.appendChild(node);
+}
+
+function showInheritedAttrs() {
+	if(selection.showInheritedAttrs = false) {
+		//show it
+
+	}
+	else {
+		//hide it
+	}
 }

@@ -1,14 +1,18 @@
 <div id="right-panel-header">
     <h3>Attributes</h3>
     <div id="right-panel-tools">
-        <div class="refresh-button" title="reload attributes from database" onclick="forceFetchAttrs()">
-            ↺
+        <div id="attrs-reload-button" onclick="forceFetchAttrs()">
+            reload attributes
+        </div>
+        <div id="attrs-inherited-button" onclick="showInheritedAttrs()">
+            <label>show</label> inherited attributes
         </div>
     </div>
 </div>
 <table id="attr-list">
     <thead>
     <tr>
+        <td>Is inherited</td>
         <td>Id</td>
         <td>Name</td>
         <td>Type</td>

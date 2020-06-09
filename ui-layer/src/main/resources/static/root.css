@@ -50,8 +50,13 @@ body {
 }
 
 #attrs-reload-button {
-	border-color: palegreen;
-	background-color: palegreen;
+	border-color: skyblue;
+	background-color: skyblue;
+}
+
+#attrs-inherited-button {
+	border-color: sandybrown;
+	background-color: sandybrown;
 }
 
 .ot-unit {
@@ -134,9 +139,3 @@ body {
 #attr-list tbody tr {
 	border-bottom: 1px solid lightgray;
 }
-
-#attr-list td:first-child {
-    text-align:center;
-}
-
-
