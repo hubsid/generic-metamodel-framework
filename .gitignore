@@ -2,6 +2,9 @@
 *.class
 #build
 target/**
+db-layer/target/**
+ui-layer/target/**
+dtos/target/**
 #idea
 .idea/**
 *.iml
