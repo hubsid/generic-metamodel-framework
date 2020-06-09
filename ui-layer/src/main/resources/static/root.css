@@ -40,6 +40,20 @@ body {
 	padding: 5px;
 }
 
+#right-panel-tools > * {
+	margin: 20px;
+	padding: 10px;
+	border-radius: 10px;
+	border-width: 1px;
+	border-style: solid;
+	color: black;
+}
+
+#attrs-reload-button {
+	border-color: palegreen;
+	background-color: palegreen;
+}
+
 .ot-unit {
 	margin-left: 40px;
 	display: flex;
