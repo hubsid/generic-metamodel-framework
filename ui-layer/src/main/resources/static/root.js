@@ -69,7 +69,7 @@ selection = {
 	attr: undefined,
 	ot: undefined,
 	getOtId: function() {return 1 * this.ot.getAttribute("ot-id");},
-	showInheritedAttrs: false
+	inheritedAttrsShown: false
 }
 
 cache = {
@@ -104,12 +104,14 @@ function fetchAttrs() {
 		ajaxCall(makeUrl_ot_attrs(otId), function(response) {
 			 attrList.innerHTML = response;
 			 cache.attrs[otId] = getChildNodesArray(attrList);
+			 showInheritedAttrs();
 		});
 	}
 	else {
 		console.log("fetching from cache");
 		removeChildNodes(attrList);
 		setChildNodesFromNodeArray(attrList, cache.attrs[otId]);
+		showInheritedAttrs();
 	}
 }
 
@@ -119,7 +121,8 @@ function forceFetchAttrs() {
 
 	ajaxCall(makeUrl_ot_attrs(otId), function(response) {
 		 attrList.innerHTML = response;
-		 cache.attrs[otId] = response;
+		 cache.attrs[otId] = getChildNodesArray(attrList);
+		 showInheritedAttrs();
 	});
 }
 
@@ -140,12 +143,37 @@ function setChildNodesFromNodeArray(elem, nodeArr) {
 		elem.appendChild(node);
 }
 
-function showInheritedAttrs() {
-	if(selection.showInheritedAttrs = false) {
-		//show it
+function onclickInheritedAttrs() {
 
+	if(selection.inheritedAttrsShown == false) {
+		setInheritedAttrs();
+		selection.inheritedAttrsShown = true;
+		elemRef.attrInheritedButton.children[0].innerText = 'hide';
+		elemRef.attrInheritedButton.classList.add('selected');
 	}
 	else {
-		//hide it
+		hideInheritedAttrs();
+		selection.inheritedAttrsShown = false;
+		elemRef.attrInheritedButton.children[0].innerText = 'show';
+		elemRef.attrInheritedButton.classList.remove('selected');	
 	}
+}
+
+function showInheritedAttrs() {
+	if(selection.inheritedAttrsShown == true)
+		setInheritedAttrs();
+}
+
+function setInheritedAttrs() {
+	var ot = selection.ot;
+	do {
+		ot = ot.parentElement.parentElement.previousElementSibling
+		var otId = ot.getAttribute('ot-id') * 1;
+		setChildNodesFromNodeArray(elemRef.attrList, cache.attrs[otId]);
+	} while(otId != 0);
+}
+
+function hideInheritedAttrs() {	
+	removeChildNodes(elemRef.attrList);
+	setChildNodesFromNodeArray(elemRef.attrList, cache.attrs[selection.getOtId()]);
 }

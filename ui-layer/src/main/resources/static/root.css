@@ -49,6 +49,10 @@ body {
 	color: black;
 }
 
+#right-panel-tools > *:active, #right-panel-tools > *.selected {
+	border: 2px solid black;
+}
+
 #attrs-reload-button {
 	border-color: skyblue;
 	background-color: skyblue;
