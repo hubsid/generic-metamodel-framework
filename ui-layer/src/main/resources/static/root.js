@@ -129,20 +129,10 @@ function forceFetchAttrs() {
 function getChildNodesArray(elem) {
 	var array = [];
 	for(childNode of elem.childNodes)
-		array.push(childNode);
+		if(childNode.nodeType == 1)
+			array.push(childNode);
 	return array;
 }
-
-function removeChildNodes(elem) {
-	while(elem.hasChildNodes())
-		elem.removeChild(elem.firstChild);
-}
-
-function setChildNodesFromNodeArray(elem, nodeArr) {
-	for(node of nodeArr)
-		elem.appendChild(node);
-}
-
 function onclickInheritedAttrs() {
 
 	if(selection.inheritedAttrsShown == false) {
@@ -166,14 +156,42 @@ function showInheritedAttrs() {
 
 function setInheritedAttrs() {
 	var ot = selection.ot;
-	do {
-		ot = ot.parentElement.parentElement.previousElementSibling
+	var otId = selection.getOtId();
+	while(otId != 0) {
+		ot = ot.parentElement.parentElement.previousElementSibling;
 		var otId = ot.getAttribute('ot-id') * 1;
 		setChildNodesFromNodeArray(elemRef.attrList, cache.attrs[otId]);
-	} while(otId != 0);
+		setInheritedCheck(cache.attrs[otId]);
+	}
+	removeInheritedCheck(cache.attrs[selection.getOtId()]);
 }
 
-function hideInheritedAttrs() {	
+function hideInheritedAttrs() {
 	removeChildNodes(elemRef.attrList);
 	setChildNodesFromNodeArray(elemRef.attrList, cache.attrs[selection.getOtId()]);
+}
+
+function removeChildNodes(elem) {
+	while(elem.hasChildNodes())
+		elem.removeChild(elem.firstChild);
+}
+
+function setChildNodesFromNodeArray(elem, nodeArr) {
+	for(node of nodeArr) {
+		elem.appendChild(node);
+	}
+}
+
+function setInheritedCheck(attrs) {
+	for(row of attrs) {
+		var firstCell = row.cells[0];
+		firstCell.innerText = '✓';
+	}
+}
+
+function removeInheritedCheck(attrs) {
+	for(row of attrs) {
+		var firstCell = row.cells[0];
+		firstCell.innerText = '';
+	}
 }

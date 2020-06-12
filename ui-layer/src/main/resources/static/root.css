@@ -143,3 +143,7 @@ body {
 #attr-list tbody tr {
 	border-bottom: 1px solid lightgray;
 }
+
+#attr-list td.attr-inherited {
+	text-align: center;
+}
