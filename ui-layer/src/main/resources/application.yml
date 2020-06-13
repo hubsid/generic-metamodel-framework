@@ -23,6 +23,7 @@ external:
       getChildrenPath: /objectType/%s/children
       getChildrenTree: /objectType/%s/childrenTree
       getBoundAttrs: /objectType/%s/attribute
+      createOt: /objectType/
 ---
 spring:
   profiles: nondev

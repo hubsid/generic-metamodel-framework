@@ -3,8 +3,14 @@ window.addEventListener("load", function onpageload() {
 	elemRef.attrReload = document.getElementById("attrs-reload-button");
 	elemRef.attrInheritedButton = document.getElementById("attrs-inherited-button");
 	elemRef.attrList = document.getElementById("attr-list").tBodies.item(0);
+	elemRef.otCreateDialog = document.getElementById("ot-create-background");
+	elemRef.otCreateInput = document.getElementById("ot-create-input-value");
 	selectThisOt(document.querySelector(".ot-description[ot-id='0']"));
 });
+
+function makeUrl_ot_create(parentOtId, childOtName) {
+	return "/otCrud/create/" + parentOtId + "/" + childOtName;
+}
 
 function makeUrl_ot_children(id) {
 	return "/ot/" + id + "/children";
@@ -80,7 +86,9 @@ elemRef = {
 	attrList: undefined,
 	attrTools: undefined,
 	attrReload: undefined,
-	attrInheritedButton: undefined
+	attrInheritedButton: undefined,
+	otCreateDialog: undefined,
+	otCreateInput: undefined
 }
 
 function selectThisOt(elem) {
@@ -193,5 +201,37 @@ function removeInheritedCheck(attrs) {
 	for(row of attrs) {
 		var firstCell = row.cells[0];
 		firstCell.innerText = '';
+	}
+}
+
+function otCreateKeyDown(event) {
+	if(event.key == 'Enter') {
+		var input = elemRef.otCreateInput.value;
+		createOT(input);
+	}
+}
+
+function createOT(input) {
+	var parentOtId = selection.getOtId();
+	ajaxCall(makeUrl_ot_create(parentOtId, input), function() {
+		elemRef.otCreateDialog.style.display = 'none';
+		fetchChildren(selection.ot.nextElementSibling);
+	})
+}
+
+function onclickCreateOT() {
+	elemRef.otCreateDialog.querySelector(".parentOtName").innerText = selection.ot.querySelector(".ot-name").innerText;
+	elemRef.otCreateDialog.style.display = 'block';
+	elemRef.otCreateInput.focus();
+	elemRef.otCreateInput.value = '';
+	window.addEventListener("keydown", otCreateDialogCloseEventListener);
+}
+
+function otCreateDialogCloseEventListener(event) {
+	console.log("came to otCreateDialogCloseEventListener");
+	console.log("key = " + event.key);
+	if(event.key == 'Escape') {
+		elemRef.otCreateDialog.style.display = 'none';
+		window.removeEventListener("keydown", otCreateDialogCloseEventListener);
 	}
 }

@@ -23,19 +23,23 @@ public class OTService {
     private String childrenurl;
     private String otTreeUrl;
     private String boundAttrsUrl;
+    private String otCreateUrl;
     private RestTemplate restTemplate;
 
     public OTService(@Autowired RestTemplate restTemplate,
                      @Value("${external.dblayer.baseurl}") String baseurl,
                      @Value("${external.dblayer.ot.getOnePath}") String getOnePath,
                      @Value("${external.dblayer.ot.getChildrenPath}") String getChildrenPath,
-                     @Value("${external.dblayer.ot.getChildrenTree}") String otTreeUrl, @Value("${external.dblayer.ot.getBoundAttrs}") String boundAttrsUrl) {
+                     @Value("${external.dblayer.ot.getChildrenTree}") String otTreeUrl,
+                     @Value("${external.dblayer.ot.getBoundAttrs}") String boundAttrsUrl,
+                     @Value("${external.dblayer.ot.createOt}") String otCreateUrl) {
         this.restTemplate = restTemplate;
         this.baseurl = baseurl;
         this.singleurl = baseurl + getOnePath;
         this.childrenurl = baseurl + getChildrenPath;
         this.otTreeUrl = baseurl + otTreeUrl;
         this.boundAttrsUrl = baseurl + boundAttrsUrl;
+        this.otCreateUrl = baseurl + otCreateUrl;
     }
 
     public List<ObjectType> getChildrenObjectType(int id) {
@@ -74,5 +78,12 @@ public class OTService {
             return response.getBody();
         }
         return Collections.emptyList();
+    }
+
+    public void createOT(int parentOtId, String childOtName) {
+        ObjectType objectType = new ObjectType();
+        objectType.setParentId(parentOtId);
+        objectType.setName(childOtName);
+        restTemplate.postForEntity(otCreateUrl, objectType, ObjectType.class);
     }
 }
